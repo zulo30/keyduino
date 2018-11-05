@@ -28,6 +28,9 @@ node main.js <<Puerto USB >>
 ![Alt description](https://www.electronicwings.com/public/images/user_images/images/Arduino/LCD/LCD_Interfacing_Diagram-8bit.png)
 
 ## Recursos
+
+* https://arduino.stackexchange.com/questions/18949/serial-communication-to-arduino-with-node-js
+
 * https://stackoverflow.com/questions/30696623/nodejs-send-data-to-arduino-using-serial
 
 * https://www.npmjs.com/package/iohook-prebuild-test
