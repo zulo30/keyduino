@@ -5,7 +5,7 @@ Trabajo Final de Arquitetura de Hardware | Universidad EIA
 * node js | [https://nodejs.org/es/](https://nodejs.org/es/)
 * npm  |  [https://www.npmjs.com](https://www.npmjs.com)
 * iohook | [https://www.npmjs.com/package/iohook](https://www.npmjs.com/package/iohook)
-* seriaport | [https://www.npmjs.com](https://www.npmjs.com)
+* seriaport | [https://www.npmjs.com/package/serialport](https://www.npmjs.com/package/serialport)
 
 ## API 's 
  * [iohook](https://wilixlead.github.io/iohook/)
