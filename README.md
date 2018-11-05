@@ -4,8 +4,12 @@ Trabajo Final de Arquitetura de Hardware | Universidad EIA
 ## Requerimientos
 * node js | [https://nodejs.org/es/](https://nodejs.org/es/)
 * npm  |  [https://www.npmjs.com](https://www.npmjs.com)
-* iohook | [https://www.npmjs.com](https://www.npmjs.com)
-* seriaport | [https://www.npmjs.com](https://www.npmjs.com)
+* iohook | [https://www.npmjs.com/package/iohook](https://www.npmjs.com/package/iohook)
+* seriaport | [https://www.npmjs.com/package/serialport](https://www.npmjs.com/package/serialport)
+
+## API 's 
+ * [iohook](https://wilixlead.github.io/iohook/)
+ * [seriaport](https://serialport.io/docs/api-stream)
 
 
 ## Importar Un Proyecto
@@ -18,7 +22,7 @@ npm install
 ```
 node main.js <<Puerto USB >>
 ```
-:heavy_exclamation_mark: *** NOTA: Para MacOS, el Puerto es /dev/tty.usbmodem14101 & para windows es COM ***
+:heavy_exclamation_mark: *** NOTA: Para MacOS, el Puerto es /dev/tty.usbmodem14101 & para linus  es /dev/ttyACMO  ***
 
 ## Conexion de Hardware 
 ![Alt description](https://www.electronicwings.com/public/images/user_images/images/Arduino/LCD/LCD_Interfacing_Diagram-8bit.png)
