@@ -6,11 +6,10 @@ var portName = process.argv[2];
 var myport = new SerialPort(portName,{
 	baudRate:9600
 })
-var parser = myport.pipe(new Readline({ delimiter: '\r\n' }))
+var parser = myport.pipe(new Readline({ delimiter: '\n' }))
 
 myport.on("open",onOpen);
 myport.on("data",startSending);
-
 
 
 
@@ -19,19 +18,16 @@ function onOpen(){
 }
 
 
-// ioHook.on('mousemove', event => {
-// 	console.log(event.type);
-// 	console.log(event.x);
-//   	setTimeout(function(){ console.log(event);},30000);
-//   	sendData(event.x);
-// });
+ioHook.on('mousemove', event => {
+	console.log(event);
+});
 
 function onData(data){
 	console.log("data: " + data);
 }
 
 function startSending() {
-	ioHook.start();
+
 }
 
 function sendData(data){
@@ -46,5 +42,5 @@ function sendData(data){
 }
 // Register and start hook
 
-
+    ioHook.start();
 
