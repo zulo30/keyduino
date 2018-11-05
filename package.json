@@ -1,0 +1,22 @@
+{
+  "name": "keyduino",
+  "version": "1.0.0",
+  "description": "node.js keylogger to capture keyboard an mouse peripherals to pass to an arduino to display on a lcd ",
+  "main": "main.js",
+  "scripts": {
+    "test": "kmd"
+  },
+  "keywords": [
+    "arduino",
+    "keyboard",
+    "nodejs",
+    "mouse"
+  ],
+  "author": "zulo30",
+  "license": "ISC",
+  "dependencies": {
+    "iohook": "^0.2.3",
+    "npx": "^10.2.0",
+    "serialport": "^7.0.2"
+  }
+}
