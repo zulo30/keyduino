@@ -18,7 +18,7 @@ npm install
 ```
 node main.js <<Puerto USB >>
 ```
-!! NOTA: para mac os /dev/tty.usbmodem14101  
+!! ***NOTA: para mac os /dev/tty.usbmodem14101  & para windows es *** 
 
 ## Conexion de Hardware 
 ![Alt description](https://www.electronicwings.com/public/images/user_images/images/Arduino/LCD/LCD_Interfacing_Diagram-8bit.png)
