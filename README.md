@@ -14,6 +14,12 @@ Trabajo Final de Arquitetura de Hardware | Universidad EIA
 npm install
 ```
 
+## Uso
+```
+node main.js <<Puerto USB >>
+```
+!! NOTA: para mac os /dev/tty.usbmodem14101  
+
 ## Conexion de Hardware 
 ![Alt description](https://www.electronicwings.com/public/images/user_images/images/Arduino/LCD/LCD_Interfacing_Diagram-8bit.png)
 
@@ -31,7 +37,6 @@ npm install
 ### Miembros
 *  Jeisson Barrera| jbarrera094@gmail.com
 *  Kevin Alexander Ibarra | 
-*  Mateo Zuluaga Loaiza | dan.lop6@hotmail.com
-
+*  Mateo Zuluaga Loaiza |zulo30@gmail.com
 
 
