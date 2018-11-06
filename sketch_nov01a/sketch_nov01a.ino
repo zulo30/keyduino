@@ -38,6 +38,7 @@ void loop() {
          checkAction(command);
       command.concat(received);
     }
+    lcd.clear();
 }
 
 void checkAction(String command){
@@ -86,14 +87,14 @@ void moveCursorRight(){
 }
 
 void moveCursorUp(){
-  if(y ==1){
-    y=0;
+  if(y == 1){
+    y = 0;
   } 
 }
 
 void moveCursorDown(){
-  if(y ==0){
-    y=1;
+  if(y == 0){
+    y = 1;
   } 
 }
 

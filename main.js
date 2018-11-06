@@ -7,32 +7,30 @@ var isReady = false;
 var x;
 var y;
 
+var mouseCount=0;
+
 var myport = new SerialPort(portName,{
 	baudRate:9600
 })
 var parser = myport.pipe(new Readline({ delimiter: '\n' }))
 
+
+//events emitters 
 myport.on("open",onOpen);
 myport.on("data",onData);
 myport.on("error",onError);
 myport.on("close",onClose);
-
-
-function onOpen(){
-    console.log("Open new connection");
-    // ioHook.start(true);
-     ioHook.start();
-
-}
-
-ioHook.on('mousemove', event => {
-	
-	if(x !== undefined && y  !== undefined)
-		selectMouseMove(x,y,event.x,event.y);
-   	else{
-   		x= event.x;
-   		y=event.y
-   	}
+ioHook.on('mousemove', e => {
+	if(mouseCount == 40){
+	  	if(x !== undefined && y  !== undefined)
+			selectMouseMove(x,y,e.x,e.y);
+	   	else{
+	   		x = e.x;
+	   		y = e.y
+	   	}
+	   	mouseCount = 0;
+	}
+	mouseCount++;
 });
 
 ioHook.on('keydown', event =>{
@@ -41,6 +39,15 @@ ioHook.on('keydown', event =>{
        sendKeyData("h");
     }
 });
+
+// functions 
+function onOpen(){
+    console.log("Open new connection");
+    // ioHook.start(true);
+     ioHook.start();
+
+}
+
 
 function onData(data){
 	if(data == "K"){
@@ -68,9 +75,7 @@ function sendData(data) {
     data += "\n";
     // The message received as a String
     myport.write(data);
-    console.log(" sending data ....");
-     ioHook.stop();
-     ioHook.start();
+   	 console.log(data);
 }
 
 function selectMouseMove(x0,y0,x1,y1){
@@ -78,6 +83,7 @@ function selectMouseMove(x0,y0,x1,y1){
 	var ydelta = y1 - y0;
 	 if( Math.abs(xdelta) > Math.abs(ydelta) ){
 	 	if(xdelta>0){
+
 	 		sendMouseData("r");
 	 	}
 	 	else{
@@ -92,8 +98,8 @@ function selectMouseMove(x0,y0,x1,y1){
 	 		sendMouseData("u");
 	 	}
 	 }
-
-
+	 x = x1;
+	 y = y1;
 }
 
 
