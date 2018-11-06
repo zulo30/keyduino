@@ -45,9 +45,9 @@ node main.js <<Puerto USB >>
 
 * https://keycode.info/
  
-*https://nodejs.org/api/events.html
+* https://nodejs.org/api/events.html
 
-*https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/
+* https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/
 
 
 ### Miembros
