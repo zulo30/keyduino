@@ -11,26 +11,26 @@ String inData = "";
 
 void setup(void)
 {
-  Serial.begin(9600);  
+  Serial.begin(9600);
   byte i;
-  lcd.begin(LCD_WIDTH, LCD_HEIGHT,1);
- 
-
+  lcd.begin(LCD_WIDTH, LCD_HEIGHT, 1);
+  Serial.write("K");
 }
 
 
 
 void loop() {
-  lcd.setCursor(0,0);
+  
+  lcd.setCursor(0, 0);
   lcd.write("keyduino: ");
-  lcd.setCursor(1,1);
+  lcd.setCursor(1, 1);
   // when characters arrive over the serial port...
-   char received = Serial.read();
-        inData.concat(received);
+  if (Serial.available()){
+    char received = Serial.read();
+  // Process message when new line character is received
+      if (received == '\n') 
+            lcd.print(inData);
+      inData.concat(received);
+    }
 
-        // Process message when new line character is received
-        if (received == '\n') {
-            // Message is ready in inDate
-        }
- 
 }

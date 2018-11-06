@@ -15,8 +15,7 @@ myport.on("close",onClose);
 
 
 function onOpen(){
-	console.log("Open new connection");
-    sendData("hola");
+    console.log("Open new connection");
 }
 
 
@@ -28,52 +27,30 @@ function onOpen(){
 ioHook.on('keydown', event =>{
     console.log(event);
     // sendData('H');
- });
+});
 
 function onData(data){
-	console.log("data: " + data);
-}
-
-function startSending() {
-
-}
-
-function sendData(data){
-	 console.log("llego");
-    // Sending String character by character
-    for(var i=0; i<data.length; i++){
-        myport.write(data);
+	if(data == "K"){
+        sendData("Mateo Zuluaga");
     }
-
-    // Sending the terminate character
-    myport.write('\n');
 }
+
 function onError(error) {
-   console.log('Serial port error: ' + error);
+ console.log('Serial port error: ' + error);
 }
 
 function onClose() {
-   console.log('port closed.');
+ console.log('port closed.');
 }
 
 
 function sendData(data) {
+    data += "\n";
     // The message received as a String
-    console.log(data);
-    // Sending String character by character
-    for(var i=0; i<data.length; i++){
-        myport.write(Buffer.from(data), function(err, results) {
-            // console.log('Error: ' + err);
-            // console.log('Results ' + results);
-        });
-    }
-    // Sending the terminate character
-    myport.write(Buffer.from("/n"), function(err, results) {
-        // console.log('err ' + err);
-        // console.log('results ' + results);
-    });
+    console.log(" sending data ....");
+    myport.write(data);
 }
 // Register and start hook
 
-    ioHook.start();
+ioHook.start();
 
