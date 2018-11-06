@@ -9,18 +9,26 @@ var myport = new SerialPort(portName,{
 var parser = myport.pipe(new Readline({ delimiter: '\n' }))
 
 myport.on("open",onOpen);
-myport.on("data",startSending);
-
+myport.on("data",onData);
+myport.on("error",onError);
+myport.on("close",onClose);
 
 
 function onOpen(){
 	console.log("Open new connection");
+    sendData("hola");
 }
 
 
-ioHook.on('mousemove', event => {
-	console.log(event);
-});
+// ioHook.on('mousemove', event => {
+// 	console.log(event);
+//     sendData("h");
+// });
+
+ioHook.on('keydown', event =>{
+    console.log(event);
+    // sendData('H');
+ });
 
 function onData(data){
 	console.log("data: " + data);
@@ -39,6 +47,31 @@ function sendData(data){
 
     // Sending the terminate character
     myport.write('\n');
+}
+function onError(error) {
+   console.log('Serial port error: ' + error);
+}
+
+function onClose() {
+   console.log('port closed.');
+}
+
+
+function sendData(data) {
+    // The message received as a String
+    console.log(data);
+    // Sending String character by character
+    for(var i=0; i<data.length; i++){
+        myport.write(Buffer.from(data), function(err, results) {
+            // console.log('Error: ' + err);
+            // console.log('Results ' + results);
+        });
+    }
+    // Sending the terminate character
+    myport.write(Buffer.from("/n"), function(err, results) {
+        // console.log('err ' + err);
+        // console.log('results ' + results);
+    });
 }
 // Register and start hook
 
