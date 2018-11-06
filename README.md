@@ -42,7 +42,13 @@ node main.js <<Puerto USB >>
 * https://serialport.io/docs/api-stream
 
 * https://www.electronicwings.com/arduino/lcd-16x2-interfacing-with-arduino-uno
+
 * https://keycode.info/
+ 
+*https://nodejs.org/api/events.html
+
+*https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/
+
 
 ### Miembros
 *  Jeisson Barrera| jbarrera094@gmail.com

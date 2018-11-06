@@ -35,10 +35,42 @@ void loop() {
     char received = Serial.read();
   // Process message when new line character is received
       if (received == '\n') 
-          writeWithCursor(command);
+         checkAction(command);
       command.concat(received);
     }
 }
+
+void checkAction(String command){
+  String ans = command.substring(2,command.length());
+  if(command.startsWith("k:")){
+    writeWithCursor(ans);
+  }
+  else{
+    char n = ans.charAt(0);
+    selectMouseMove(n);
+  }
+  
+}
+
+void selectMouseMove(char ans){
+    switch (ans) {
+    case 'u':
+      moveCursorUp();
+      break;
+    case 'd':
+      moveCursorDown();
+      break;
+    case 'l':
+       moveCursorLeft();
+      break;
+    case 'r':
+        moveCursorRight();
+      break;
+    default:
+      break; 
+   }
+}
+
 
 
 void moveCursorLeft(){
@@ -54,14 +86,14 @@ void moveCursorRight(){
 }
 
 void moveCursorUp(){
-  if(x ==1){
-    x=0;
+  if(y ==1){
+    y=0;
   } 
 }
 
 void moveCursorDown(){
-  if(x ==0){
-    x=1;
+  if(y ==0){
+    y=1;
   } 
 }
 
