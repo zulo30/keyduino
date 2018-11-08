@@ -1,12 +1,8 @@
-"use strict";
-
 var ioHook = require('iohook');
 var SerialPort = require("serialport");
 var Readline = require('@serialport/parser-readline')
 var portName = process.argv[2];
-var ready = true;
-var keyboard = require('./keyboardmap.js');
-
+var isReady = false;
 
 var x;
 var y;
@@ -23,57 +19,39 @@ var parser = myport.pipe(new Readline({ delimiter: '\n' }))
 myport.on("open",onOpen);
 myport.on("data",onData);
 myport.on("error",onError);
-//myport.on("close",onClose);
-
+myport.on("close",onClose);
 ioHook.on('mousemove', e => {
-    if(mouseCount == 15){
-    	var bool = isReadyToSend();
-    	if(x !== undefined && y  !== undefined)
+	if(mouseCount == 40){
+	  	if(x !== undefined && y  !== undefined)
 			selectMouseMove(x,y,e.x,e.y);
 	   	else{
 	   		x = e.x;
-	   		y = e.y;
+	   		y = e.y
 	   	}
 	   	mouseCount = 0;
 	}
-	mouseCount++;	
+	mouseCount++;
 });
 
 ioHook.on('keydown', event =>{
     console.log(event);
-    var bool = isReadyToSend();
-    if( bool ){
-    	 var key = keyboard[event.keycode];
-       console.log(key);
-       sendKeyData(key);
+    if(isReady){
+       sendKeyData("h");
     }
 });
-
- function isReadyToSend(){
-	if(ready){
-		ready = false;
-		return true;
-	} 
-	else{
-		return false;
-	}
-}
-
 
 // functions 
 function onOpen(){
     console.log("Open new connection");
     // ioHook.start(true);
-     
+     ioHook.start();
+
 }
+
 
 function onData(data){
 	if(data == "K"){
-
-        ready = true;
-    }
-    else{
-    	console.log("this"+data);
+        isReady = true;
     }
 }
 
@@ -97,6 +75,7 @@ function sendData(data) {
     data += "\n";
     // The message received as a String
     myport.write(data);
+   	 console.log(data);
 }
 
 function selectMouseMove(x0,y0,x1,y1){
@@ -123,7 +102,6 @@ function selectMouseMove(x0,y0,x1,y1){
 	 y = y1;
 }
 
-ioHook.start(true);
 
 
 

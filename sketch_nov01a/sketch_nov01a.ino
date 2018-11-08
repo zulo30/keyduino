@@ -10,7 +10,6 @@ LiquidCrystal lcd(13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3);  /* For 8-bit mode */
  *  D: down | abajo
  *  L: left | izquierda
  *  R: right | derecha
- *  
  */
 
 String command = "";
@@ -35,15 +34,11 @@ void loop() {
   if (Serial.available()){
     char received = Serial.read();
   // Process message when new line character is received
-  
-      command.concat(received);
-      if (received == '\n') {
-        command = command.substring(0,command.length() -1 );
+      if (received == '\n') 
          checkAction(command);
-         command = "";
-      }
-     
+      command.concat(received);
     }
+    lcd.clear();
 }
 
 void checkAction(String command){
@@ -51,14 +46,11 @@ void checkAction(String command){
   if(command.startsWith("k:")){
     writeWithCursor(ans);
   }
-  else if(command.startsWith("m:")){
+  else{
     char n = ans.charAt(0);
     selectMouseMove(n);
-  } 
-  else{
-    command ="";
-  } 
-   command ="";
+  }
+  
 }
 
 void selectMouseMove(char ans){
@@ -78,24 +70,20 @@ void selectMouseMove(char ans){
     default:
       break; 
    }
-  sendCursorData();
-  lcd.setCursor(1,1);
-  lcd.print(ans);
 }
 
 
 
 void moveCursorLeft(){
-  if( x<=16 && x>0 ){
+  if(x<15){
     x--;
   } 
 }
 
 void moveCursorRight(){
-  if( x<16 && x>=0){
+  if(x>0){
     x++;
   } 
-  
 }
 
 void moveCursorUp(){
@@ -116,10 +104,5 @@ void writeWithCursor(String msg){
      lcd.print(msg);
      x=res;
   }
-}
-
-void sendCursorData(){
-  lcd.setCursor(0,0);
-  String ans = String("x: ")+ x + "y: " + y;
-  lcd.print(ans);
+  
 }
