@@ -1,7 +1,7 @@
 # Trabajo Final de Arquitetura de Hardware : 
 Trabajo Final de Arquitetura de Hardware | Universidad EIA
 
-## Requerimientos
+## Pre-requisitos
 * node js | [https://nodejs.org/es/](https://nodejs.org/es/)
 * npm  |  [https://www.npmjs.com](https://www.npmjs.com)
 * iohook | [https://www.npmjs.com/package/iohook](https://www.npmjs.com/package/iohook)
